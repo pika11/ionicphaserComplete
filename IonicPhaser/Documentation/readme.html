@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ionic 2 - Phaser | Starter Documentation</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      body {
+        margin: 10px;
+        background-color: #efefef;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Ionic 2 + Phaser </h1>
+
+    <h3>Why?</h3>
+    <p>
+      So Ionic 2 is awesome, I've worked with other cross-platform tools (corona SDK, Unity 3D, Xamarin, plain html + cordova) to make apps and even though it uses HTML you can barely notice it once it's running on the device the UI is so simple yet so close to an actual native app.<br>
+      So why add another framework to Ionic 2? <br>
+      Well my idea was born because I wanted an app that had some animation and interactivity in certain parts but I didn't want to use a game engine like Unity given that even though the game part is really cool the UI part is plain awful (at least compared to a framework like Ionic) and a lot of the app needed lists and buttons and things that are really easy in Ionic. <br>
+      I haven't found much information on how to put this together so I decided to make this starter pack.
+    </p>
+
+    <h3>To get started</h3>
+    <p>To get started whit the project you have to cd into the PhaserIonic folder and run</p>
+    <ul>
+      <li>ionic state restore</li>
+      <li>npm install</li>
+      <li>ionic serve (to test if the app/game is working)</li>
+    </ul>
+
+    <h3>Structure</h3>
+    <p>
+      In the main folder of this app there are 2 folders.
+      <ol>
+        <li>PhaserIonic</li>
+        <li>PhaserTest</li>
+      </ol>
+    </p>
+
+    <h4>PhaserIonic</h4>
+    <p>
+      Here resides the Ionic 2 project with 3 pages.
+      <ol>
+        <li>home</li>
+        <li>show-all</li>
+        <li>full-screen</li>
+      </ol>
+      In the home page there is just a list with to items one for each page show-all.ts and full-screen.ts <br>
+      The next 2 pages show one sample game provided by Pablo Farias Navarro and you can find it <a href="https://software.intel.com/en-us/html5/hub/blogs/how-to-make-a-mobile-virtual-pet-game-with-html5-and-cordova/">here</a>.<br>
+      Further down in the Documentation we will explain in more detail the difference between these 2.<br>
+      So here is where your app lives and everything is set up for you to start using Phaser with Ionic.<br><br>
+
+      The phaser code should go on the PhaserGame() function in the page where you want it to go. Here everything runs as a phaser game and you can find the documentation <a href="http://phaser.io/">here</a>. <br>
+      There are some changes like the use of the "phaser" variable instead of the "this" keyword that are used in some phaser samples mainly to avoid issues give that in Ionic 2 "this" refers to the class where the code is written.<br>
+    </p>
+
+    <h4>PhaserTest</h4>
+    <p>
+      Here resides a folder where you can develop the game and the copy the code over to the page.ts file in your Ionic app. <br>
+      It has 2 folders,
+      <ol>
+        <li>FullScreen</li>
+        <li>ShowAll</li>
+      </ol>
+      So why is there another folder with the same project just to copy it to the Ionic 2 project later on.<br>
+      Well Ionic compiles and translates everything when some change is made which is great unless you are making an awful lot of changes which is what happens when you are making a game. Having an old Macbook Air from 2011 as my development machine backfires really quickly making so much changes to test and place every object in the game starts to beat up my laptop. <br>
+      So I use this extra folder to make sure the game is working and later on just copy the code to the Ionic 2 page.ts file. With a simple refresh of the page I can check if everything is working.<br>
+      To use this folder you'll need a webserver running in these folders I personally use <a href="https://www.npmjs.com/package/http-server">npm http-server</a> but you can use any webserver you like I think there is a really similar option using python or you can use something like MAMP/WAMP. <br><br>
+      For it to be easy to copy and paste it to the ionic project without making any changes these folders js are written in ES6 so be sure to use a browser that supports it. I use Chrome. <br>
+      This folder is just something that helped me with my workflow and is not at all mandatory to use, if you like to developed your game/app directly in the Ionic 2 project feel free to do it, this is just a little helper that I've included.
+    </p>
+
+    <h3>ShowAll v FullScreen</h3>
+    <p>
+      So you'll see that in everything the starter has I've provided to versions of the game a ShowAll and a FullScreen version.<br>
+      This refers to the scaling mechanism that phaser uses. The ShowAll option is the most used in most of the tutorials using phaser on a mobile device and the FullScreen is a proper implementation because even though the ShowAll functions very well I don't particularly like the end result.<br><br>
+      I will explain the difference between this 2 and you can use whichever you prefer. The ShowAll method is easier and less complicated but I personally like the FullScreen method.
+    </p>
+
+    <h4>The difference</h4>
+    <div>
+      <div class="col-xs-6">
+        <img style="max-height:500px" class="img-responsive center-block" src="img/ios/showall.png" alt="">
+      </div>
+      <div class="col-xs-6">
+        <img style="max-height:500px" class="img-responsive center-block" src="img/ios/fullscreen.png" alt="">
+      </div>
+    </div>
+    <p>
+      So the difference may not seem like much and with many devices as long as the aspect-ratio (I prefer to call it 'shape') is the same there won't be any difference whatsoever however you can see the difference as the ShowAll method having some white spaces on the sides. And the FullScreen method having no whitespace at the cost of not showing the complete background image. (some portions of the bottom and the top get cut from the view) <br>
+    </p>
+    <h4>ShowAll</h4>
+    <p>
+      This method is definitely the easiest one as you set up the native resolution in which you want your game to be this means no extra calculations to place game objects or scaling anything if you design your game to work at 1134x750 well you just set everything and place everything with those dimensions in mind. if the shape is not the same on the device that is running phaser will put white spaces on the sides to match the same shape and available space. <br><br>
+      Here are some screenshots from the ios simulator and from and android device.
+    </p>
+    <div>
+      <div class="col-xs-6">
+        <img style="max-height:500px" class="img-responsive center-block" src="img/ios/showall.png" alt="">
+      </div>
+      <div class="col-xs-6">
+        <img style="max-height:500px" class="img-responsive center-block" src="img/android/showall.png" alt="">
+      </div>
+    </div>
+    <h4>FullScreen</h4>
+    <p>
+      This method uses the full width and height of the parent element and this is why there are no white spaces in the end result. However to achieve this the scale and coordinates for every game object have to be multiplied by the ratio factor of the the game resolution that you have designed your game for and the actual available space you have in the device. <br><br>
+      It's clearer when you see the code in the PhaserTest folder. I've provided the basic calculations and samples on how to do this including having menu items get anchored to the camera instead of the game world. I would recommend this method to someone who has some experience with game development given that concepts like world, camera and such are clearer to someone who has previous knowledge on the subject.
+    </p>
+    <div>
+      <div class="col-xs-6">
+        <img style="max-height:500px" class="img-responsive center-block" src="img/ios/fullscreen.png" alt="">
+      </div>
+      <div class="col-xs-6">
+        <img style="max-height:500px" class="img-responsive center-block" src="img/android/fullscreen.png" alt="">
+      </div>
+    </div>
+
+    <h2>Contact</h2>
+    <p>You can contact me for any guidance or questions via <a href="https://twitter.com/PIKA11">Twitter</a></p>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
